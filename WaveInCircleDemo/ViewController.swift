@@ -14,12 +14,25 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.wave.hightlightColor = UIColor.brown
+        view.backgroundColor = .lightGray
+        
+        self.wave.hightlightColor = UIColor.blue
         self.wave.normalColor = UIColor.white
         self.wave.text = "DO"
+        self.wave.progress = 0.4
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
             self.wave.animate()
+        }
+        
+        Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { (timer) in
+            if self.wave.progress >= 1.1 {
+                timer.invalidate()
+                self.wave.stopAnimate()
+                self.wave.text = "OK"
+            }else {
+                self.wave.progress = self.wave.progress + 0.001
+            }
         }
         
         //        DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
