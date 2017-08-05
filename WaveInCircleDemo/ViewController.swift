@@ -10,16 +10,21 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var wave: WaveInCircleView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        self.wave.hightlightColor = UIColor.brown
+        self.wave.normalColor = UIColor.white
+        self.wave.text = "DO"
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.wave.animate()
+        }
+        
+        //        DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
+        //            self.wave.stopAnimate()
+        //        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 

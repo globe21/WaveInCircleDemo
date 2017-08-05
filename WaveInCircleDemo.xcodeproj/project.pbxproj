@@ -12,6 +12,8 @@
 		2904DF4E1F35A91900DF221D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2904DF4C1F35A91900DF221D /* Main.storyboard */; };
 		2904DF501F35A91900DF221D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2904DF4F1F35A91900DF221D /* Assets.xcassets */; };
 		2904DF531F35A91900DF221D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2904DF511F35A91900DF221D /* LaunchScreen.storyboard */; };
+		2904DF5C1F35A93B00DF221D /* Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2904DF5B1F35A93B00DF221D /* Extenstions.swift */; };
+		2904DF5E1F35A94400DF221D /* WaveInCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2904DF5D1F35A94400DF221D /* WaveInCircleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		2904DF4F1F35A91900DF221D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2904DF521F35A91900DF221D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2904DF541F35A91900DF221D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2904DF5B1F35A93B00DF221D /* Extenstions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extenstions.swift; sourceTree = "<group>"; };
+		2904DF5D1F35A94400DF221D /* WaveInCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveInCircleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +58,9 @@
 		2904DF471F35A91900DF221D /* WaveInCircleDemo */ = {
 			isa = PBXGroup;
 			children = (
+				2904DF5A1F35A92700DF221D /* Extensions */,
 				2904DF481F35A91900DF221D /* AppDelegate.swift */,
+				2904DF5D1F35A94400DF221D /* WaveInCircleView.swift */,
 				2904DF4A1F35A91900DF221D /* ViewController.swift */,
 				2904DF4C1F35A91900DF221D /* Main.storyboard */,
 				2904DF4F1F35A91900DF221D /* Assets.xcassets */,
@@ -62,6 +68,14 @@
 				2904DF541F35A91900DF221D /* Info.plist */,
 			);
 			path = WaveInCircleDemo;
+			sourceTree = "<group>";
+		};
+		2904DF5A1F35A92700DF221D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2904DF5B1F35A93B00DF221D /* Extenstions.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,7 +150,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2904DF5E1F35A94400DF221D /* WaveInCircleView.swift in Sources */,
 				2904DF4B1F35A91900DF221D /* ViewController.swift in Sources */,
+				2904DF5C1F35A93B00DF221D /* Extenstions.swift in Sources */,
 				2904DF491F35A91900DF221D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
