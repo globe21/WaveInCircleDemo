@@ -31,7 +31,13 @@ class WaveInCircleView: UIView {
         }
     }
     
-    var yScale:CGFloat = 20 // 波峰到波谷高度40
+    var yScale: CGFloat = 20 // 波峰到波谷高度40
+    
+    var progress: CGFloat = 0.5 {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     
     var text: String? {
         didSet {
@@ -97,17 +103,17 @@ class WaveInCircleView: UIView {
     
     private var viewMaskLayer: CAShapeLayer?
     
+    // Fixed: 不设置 strokeColor 会使上半圆有下半圆填充颜色的边框，设置后消失，但是设置颜色并没有显示出来
     private var label1MaskLayer: CAShapeLayer = {
         let sl = CAShapeLayer()
+        sl.strokeColor = UIColor.blue.cgColor
+        sl.lineWidth = 0
         return sl
     }()
     
     private var circlePath: UIBezierPath?
     
     override func draw(_ rect: CGRect) {
-        /*if layer.cornerRadius == 0 {
-            layer.cornerRadius = bounds.width/2
-        }*/
         if viewMaskLayer == nil {
             viewMaskLayer = CAShapeLayer()
             let path = UIBezierPath()
@@ -123,11 +129,11 @@ class WaveInCircleView: UIView {
     // compute property
     private var path: UIBezierPath {
         get {
-            
             let height = bounds.height
             let width = bounds.width
             
             let path = UIBezierPath()
+            
             path.move(to: CGPoint(x: 0, y: height/2))
             for step in stride(from: 0, to: 2 * CGFloat.pi, by: CGFloat.pi / 180) {
                 path.addLine(to: point(with: step, offsetDegree: self.offsetDegree))
@@ -145,7 +151,6 @@ class WaveInCircleView: UIView {
                                           endAngle: endAngle,
                                           clockwise: false)
             }
-            UIColor.clear.set()
             path.append(circlePath!)
             
             return path
@@ -153,8 +158,9 @@ class WaveInCircleView: UIView {
     }
     
     private func point(with degree: CGFloat, offsetDegree: CGFloat) -> CGPoint {
-        let moveToX = bounds.width/2/CGFloat.pi * degree
-        let moveToY = bounds.height/2 - yScale * CGFloat(sin(degree - offsetDegree))
+        let moveToX = bounds.width * 0.5 / CGFloat.pi * degree
+        // cause
+        let moveToY = bounds.height * (1 - progress) - yScale * CGFloat(sin(degree - offsetDegree))
         
         return CGPoint(x: moveToX, y: moveToY)
     }
