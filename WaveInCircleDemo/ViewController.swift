@@ -19,19 +19,19 @@ class ViewController: UIViewController {
         self.wave.hightlightColor = UIColor.blue
         self.wave.normalColor = UIColor.white
         self.wave.text = "DO"
-        self.wave.progress = 0.4
+        self.wave.fillingProgress = 0.4
         
         DispatchQueue.main.asyncAfter(deadline: .now()) {
             self.wave.animate()
         }
         
         Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { (timer) in
-            if self.wave.progress >= 1.1 {
+            if self.wave.fillingProgress >= 1.1 {
                 timer.invalidate()
                 self.wave.stopAnimate()
                 self.wave.text = "OK"
             }else {
-                self.wave.progress = self.wave.progress + 0.001
+                self.wave.fillingProgress = self.wave.fillingProgress + 0.001
             }
         }
         
